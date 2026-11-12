@@ -1,0 +1,5 @@
+2026-11-10 08:00:01 INFO Démarrage du service
+2026-11-10 08:05:00 ERROR Timeout de connexion à la base db-01 après 30 s
+2026-11-10 08:30:00 WARNING Quota disque à 85 %
+2026-11-10 09:10:00 ERROR Fichier introuvable : /data/import/a.csv
+2026-11-10 09:20:00 INFO Cache rafraîchi (120 entrées)

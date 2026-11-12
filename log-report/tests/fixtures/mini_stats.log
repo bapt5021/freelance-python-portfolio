@@ -1,0 +1,13 @@
+2026-11-10 08:01:00 ERROR Timeout de connexion à la base db-01 après 30 s
+2026-11-10 08:15:00 ERROR Timeout de connexion à la base db-02 après 30 s
+2026-11-10 08:20:00 INFO Utilisateur 42 connecté
+2026-11-10 08:45:10 ERROR Échec du paiement : transaction 9f8e7d6c5b refusée
+Traceback (most recent call last):
+2026-11-10 09:30:00 WARN Quota disque à 91 %
+2026-11-10 10:00:00 ERROR Timeout de connexion à la base db-01 après 30 s
+2026-11-10 10:59:59 ERROR Fichier introuvable : /data/import/clients.csv
+2026-11-10 11:00:00 ERROR Erreur SMTP 451 lors de l'envoi à 10.0.0.12
+2026-11-10 11:05:00 ERROR Mémoire insuffisante dans le worker 3
+2026-11-10 11:10:00 ERROR Échec du paiement : transaction a1b2c3d4e5 refusée
+2026-11-10 11:20:00 ERROR Disque plein sur /var
+

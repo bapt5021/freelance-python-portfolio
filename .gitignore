@@ -1,0 +1,8 @@
+# Secrets
+.env
+# Environnements / caches
+.venv/
+.cache/
+__pycache__/
+*.pyc
+.pytest_cache/

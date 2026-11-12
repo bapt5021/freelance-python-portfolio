@@ -1,0 +1,6 @@
+message,occurrences
+Timeout de connexion à la base db-<N> après <N> s,15
+KeyError 'customer_id' dans OrderSerializer.to_dict,8
+Erreur SMTP <N> lors de l'envoi à <IP>,6
+Échec du paiement : transaction <ID> refusée,4
+Fichier introuvable : /data/import/clients.csv,3

@@ -1,0 +1,152 @@
+--- old.log
++++ new.log
+# 43 ligne(s) supprimée(s), 106 ligne(s) ajoutée(s)
+- [l.1] 2026-11-10 06:02:33 INFO Requête GET /api/orders/4657 traitée en 173 ms
+- [l.2] 2026-11-10 06:03:17 INFO Requête GET /api/orders/7499 traitée en 24 ms
+- [l.3] 2026-11-10 06:03:57 INFO Requête GET /api/orders/3181 traitée en 86 ms
+- [l.4] 2026-11-10 06:04:02 INFO Requête GET /api/orders/6054 traitée en 155 ms
+- [l.5] 2026-11-10 06:04:46 INFO Utilisateur 53 connecté
+- [l.6] 2026-11-10 06:04:56 INFO Utilisateur 191 connecté
+- [l.7] 2026-11-10 06:05:52 ERROR Fichier introuvable : /data/import/clients.csv
+- [l.8] 2026-11-10 06:06:11 INFO Cache rafraîchi (895 entrées)
+- [l.9] 2026-11-10 06:06:25 INFO Cache rafraîchi (470 entrées)
+- [l.10] 2026-11-10 06:10:17 INFO Utilisateur 358 connecté
+- [l.11] 2026-11-10 06:14:39 INFO Requête GET /api/orders/5919 traitée en 146 ms
+- [l.12] 2026-11-10 06:16:25 INFO Tâche planifiée export_quotidien terminée
+- [l.13] 2026-11-10 06:24:57 INFO Tâche planifiée export_quotidien terminée
+- [l.14] 2026-11-10 06:26:57 INFO Requête GET /api/orders/2934 traitée en 143 ms
+- [l.15] 2026-11-10 06:28:32 INFO Tâche planifiée export_quotidien terminée
+- [l.16] 2026-11-10 06:28:58 WARNING Quota disque à 93 %
+- [l.17] 2026-11-10 06:29:36 ERROR Fichier introuvable : /data/import/stocks.csv
+- [l.18] 2026-11-10 06:34:38 INFO Cache rafraîchi (693 entrées)
+- [l.19] 2026-11-10 06:36:34 INFO Requête GET /api/orders/2533 traitée en 81 ms
+- [l.20] 2026-11-10 06:37:37 INFO Requête GET /api/orders/1994 traitée en 91 ms
+- [l.21] 2026-11-10 06:39:47 INFO Cache rafraîchi (391 entrées)
+- [l.22] 2026-11-10 06:44:26 INFO Tâche planifiée export_quotidien terminée
+- [l.23] 2026-11-10 06:56:03 ERROR Échec du paiement : transaction 9c2b0537e6 refusée
+- [l.24] Traceback (most recent call last):
+- [l.25]   File "app/orders.py", line 42, in serialize
+- [l.26] 2026-11-10 07:05:30 INFO Tâche planifiée export_quotidien terminée
+- [l.27] 2026-11-10 07:08:49 INFO Tâche planifiée export_quotidien terminée
+- [l.28] 2026-11-10 07:09:20 INFO Cache rafraîchi (336 entrées)
+- [l.29] 2026-11-10 07:11:21 WARNING Temps de réponse élevé sur /api/search : 1519 ms
+- [l.30] 2026-11-10 07:14:53 WARNING Temps de réponse élevé sur /api/search : 949 ms
+- [l.31] 2026-11-10 07:16:54 INFO Utilisateur 135 connecté
+- [l.32] 2026-11-10 07:18:58 INFO Utilisateur 215 connecté
+- [l.33] 2026-11-10 07:19:37 INFO Tâche planifiée export_quotidien terminée
+- [l.34] 2026-11-10 07:26:41 INFO Requête GET /api/orders/8481 traitée en 155 ms
+- [l.35] 2026-11-10 07:27:09 INFO Cache rafraîchi (503 entrées)
+- [l.36] 2026-11-10 07:27:25 WARNING Nouvelle tentative de connexion SMTP (2/3)
+- [l.37] 2026-11-10 07:30:39 ERROR Timeout de connexion à la base db-01 après 30 s
+- [l.38] 2026-11-10 07:33:53 WARNING Nouvelle tentative de connexion SMTP (1/3)
+- [l.39] 2026-11-10 07:37:30 WARNING Nouvelle tentative de connexion SMTP (1/3)
+- [l.40] 2026-11-10 07:50:24 INFO Tâche planifiée export_quotidien terminée
+- [l.41] 2026-11-10 07:52:26 INFO Requête GET /api/orders/4407 traitée en 169 ms
+- [l.42] 2026-11-10 07:55:55 INFO Tâche planifiée export_quotidien terminée
+- [l.43] 2026-11-10 07:59:29 INFO Tâche planifiée export_quotidien terminée
++ [l.144] 2026-11-10 14:00:00 INFO Déploiement de la version 2.4 terminé
++ [l.145] 2026-11-10 14:01:22 INFO Utilisateur 48 connecté
++ [l.146] 2026-11-10 14:04:14 WARNING Temps de réponse élevé sur /api/search : 2475 ms
++ [l.147] 2026-11-10 14:08:35 INFO Cache rafraîchi (542 entrées)
++ [l.148] 2026-11-10 14:13:47 INFO Requête GET /api/orders/3084 traitée en 20 ms
++ [l.149] 2026-11-10 14:14:20 INFO Cache rafraîchi (701 entrées)
++ [l.150] 2026-11-10 14:17:38 INFO Requête GET /api/orders/7414 traitée en 147 ms
++ [l.151] 2026-11-10 14:18:26 INFO Cache rafraîchi (354 entrées)
++ [l.152] 2026-11-10 14:18:56 INFO Utilisateur 80 connecté
++ [l.153] 2026-11-10 14:23:05 ERROR KeyError 'customer_id' dans OrderSerializer.to_dict
++ [l.154] Traceback (most recent call last):
++ [l.155]   File "app/orders.py", line 42, in serialize
++ [l.156] 2026-11-10 14:24:35 INFO Cache rafraîchi (187 entrées)
++ [l.157] 2026-11-10 14:25:43 INFO Requête GET /api/orders/1022 traitée en 44 ms
++ [l.158] 2026-11-10 14:26:08 WARNING Temps de réponse élevé sur /api/search : 2144 ms
++ [l.159] 2026-11-10 14:28:10 INFO Tâche planifiée export_quotidien terminée
++ [l.160] 2026-11-10 14:28:15 INFO Cache rafraîchi (815 entrées)
++ [l.161] 2026-11-10 14:34:00 INFO Requête GET /api/orders/2152 traitée en 88 ms
++ [l.162] 2026-11-10 14:35:46 INFO Utilisateur 199 connecté
++ [l.163] 2026-11-10 14:38:53 WARNING Nouvelle tentative de connexion SMTP (1/3)
++ [l.164] 2026-11-10 14:39:12 ERROR Échec du paiement : transaction 4775efd233 refusée
++ [l.165] 2026-11-10 14:50:54 INFO Utilisateur 244 connecté
++ [l.166] 2026-11-10 14:51:10 INFO Utilisateur 15 connecté
++ [l.167] 2026-11-10 14:51:20 INFO Tâche planifiée export_quotidien terminée
++ [l.168] 2026-11-10 14:55:15 ERROR Timeout de connexion à la base db-03 après 30 s
++ [l.169] 2026-11-10 14:59:26 ERROR Échec du paiement : transaction ec6ca06496 refusée
++ [l.170] 2026-11-10 15:00:27 WARNING Quota disque à 83 %
++ [l.171] 2026-11-10 15:02:19 INFO Cache rafraîchi (724 entrées)
++ [l.172] 2026-11-10 15:04:36 ERROR Timeout de connexion à la base db-02 après 30 s
++ [l.173] 2026-11-10 15:13:14 ERROR KeyError 'customer_id' dans OrderSerializer.to_dict
++ [l.174] 2026-11-10 15:13:31 ERROR Timeout de connexion à la base db-03 après 30 s
++ [l.175] Traceback (most recent call last):
++ [l.176]   File "app/orders.py", line 42, in serialize
++ [l.177] 2026-11-10 15:13:40 ERROR Timeout de connexion à la base db-02 après 30 s
++ [l.178] 2026-11-10 15:14:00 INFO Tâche planifiée export_quotidien terminée
++ [l.179] 2026-11-10 15:15:45 INFO Requête GET /api/orders/3713 traitée en 96 ms
++ [l.180] 2026-11-10 15:19:56 ERROR KeyError 'customer_id' dans OrderSerializer.to_dict
++ [l.181] 2026-11-10 15:21:16 INFO Tâche planifiée export_quotidien terminée
++ [l.182] 2026-11-10 15:23:04 INFO Cache rafraîchi (482 entrées)
++ [l.183] 2026-11-10 15:24:44 INFO Cache rafraîchi (273 entrées)
++ [l.184] 2026-11-10 15:27:03 ERROR Timeout de connexion à la base db-01 après 30 s
++ [l.185] 2026-11-10 15:28:42 INFO Requête GET /api/orders/4398 traitée en 109 ms
++ [l.186] 2026-11-10 15:31:45 WARNING Quota disque à 93 %
++ [l.187] 2026-11-10 15:33:50 ERROR KeyError 'customer_id' dans OrderSerializer.to_dict
++ [l.188] 2026-11-10 15:34:27 INFO Cache rafraîchi (297 entrées)
++ [l.189] 2026-11-10 15:46:35 WARNING Nouvelle tentative de connexion SMTP (2/3)
++ [l.190] 2026-11-10 15:47:30 ERROR Fichier introuvable : /data/import/stocks.csv
++ [l.191] Traceback (most recent call last):
++ [l.192]   File "app/orders.py", line 42, in serialize
++ [l.193] 2026-11-10 15:49:02 ERROR Timeout de connexion à la base db-01 après 30 s
++ [l.194] 2026-11-10 15:50:27 INFO Tâche planifiée export_quotidien terminée
++ [l.195] 2026-11-10 15:52:16 WARNING Quota disque à 81 %
++ [l.196] 2026-11-10 15:54:24 WARNING Nouvelle tentative de connexion SMTP (3/3)
++ [l.197] 2026-11-10 15:55:58 WARNING Quota disque à 89 %
++ [l.198] 2026-11-10 15:57:41 ERROR KeyError 'customer_id' dans OrderSerializer.to_dict
++ [l.199] 2026-11-10 16:00:35 WARNING Quota disque à 94 %
++ [l.200] 2026-11-10 16:01:39 WARNING Nouvelle tentative de connexion SMTP (1/3)
++ [l.201] 2026-11-10 16:04:27 INFO Cache rafraîchi (870 entrées)
++ [l.202] 2026-11-10 16:07:19 ERROR Fichier introuvable : /data/import/clients.csv
++ [l.203] 2026-11-10 16:09:03 INFO Utilisateur 219 connecté
++ [l.204] 2026-11-10 16:10:19 INFO Requête GET /api/orders/5339 traitée en 171 ms
++ [l.205] 2026-11-10 16:12:29 ERROR Timeout de connexion à la base db-02 après 30 s
++ [l.206] 2026-11-10 16:15:57 INFO Utilisateur 120 connecté
++ [l.207] 2026-11-10 16:16:07 ERROR Erreur SMTP 451 lors de l'envoi à 10.0.3.193
++ [l.208] 2026-11-10 16:17:08 INFO Requête GET /api/orders/5815 traitée en 87 ms
++ [l.209] 2026-11-10 16:20:42 WARNING Quota disque à 91 %
++ [l.210] 2026-11-10 16:26:23 WARNING Quota disque à 86 %
++ [l.211] 2026-11-10 16:29:21 INFO Utilisateur 126 connecté
++ [l.212] 2026-11-10 16:31:47 WARNING Quota disque à 86 %
++ [l.213] 2026-11-10 16:32:26 WARNING Quota disque à 88 %
++ [l.214] 2026-11-10 16:33:41 INFO Utilisateur 333 connecté
++ [l.215] 2026-11-10 16:33:53 INFO Cache rafraîchi (137 entrées)
++ [l.216] 2026-11-10 16:41:27 ERROR Erreur SMTP 451 lors de l'envoi à 10.0.3.217
++ [l.217] 2026-11-10 16:47:14 INFO Tâche planifiée export_quotidien terminée
++ [l.218] 2026-11-10 16:48:50 WARNING Temps de réponse élevé sur /api/search : 1676 ms
++ [l.219] 2026-11-10 16:50:24 INFO Utilisateur 477 connecté
++ [l.220] 2026-11-10 16:52:45 ERROR Erreur SMTP 451 lors de l'envoi à 10.0.2.116
++ [l.221] 2026-11-10 16:52:59 INFO Requête GET /api/orders/2733 traitée en 175 ms
++ [l.222] 2026-11-10 16:53:55 INFO Tâche planifiée export_quotidien terminée
++ [l.223] 2026-11-10 16:54:47 ERROR Fichier introuvable : /data/import/clients.csv
++ [l.224] Traceback (most recent call last):
++ [l.225]   File "app/orders.py", line 42, in serialize
++ [l.226] 2026-11-10 16:55:37 INFO Requête GET /api/orders/4333 traitée en 14 ms
++ [l.227] 2026-11-10 16:56:10 INFO Cache rafraîchi (794 entrées)
++ [l.228] 2026-11-10 16:56:23 INFO Tâche planifiée export_quotidien terminée
++ [l.229] 2026-11-10 17:02:08 INFO Tâche planifiée export_quotidien terminée
++ [l.230] 2026-11-10 17:04:19 INFO Tâche planifiée export_quotidien terminée
++ [l.231] 2026-11-10 17:06:13 INFO Cache rafraîchi (152 entrées)
++ [l.232] 2026-11-10 17:06:55 WARNING Nouvelle tentative de connexion SMTP (2/3)
++ [l.233] 2026-11-10 17:10:33 INFO Requête GET /api/orders/6960 traitée en 176 ms
++ [l.234] 2026-11-10 17:11:10 ERROR KeyError 'customer_id' dans OrderSerializer.to_dict
++ [l.235] 2026-11-10 17:13:53 ERROR KeyError 'customer_id' dans OrderSerializer.to_dict
++ [l.236] 2026-11-10 17:26:59 INFO Cache rafraîchi (691 entrées)
++ [l.237] 2026-11-10 17:27:51 INFO Cache rafraîchi (891 entrées)
++ [l.238] 2026-11-10 17:33:00 ERROR Timeout de connexion à la base db-03 après 30 s
++ [l.239] Traceback (most recent call last):
++ [l.240]   File "app/orders.py", line 42, in serialize
++ [l.241] 2026-11-10 17:33:50 INFO Cache rafraîchi (191 entrées)
++ [l.242] 2026-11-10 17:36:27 INFO Tâche planifiée export_quotidien terminée
++ [l.243] 2026-11-10 17:37:24 INFO Utilisateur 75 connecté
++ [l.244] 2026-11-10 17:37:33 WARNING Temps de réponse élevé sur /api/search : 1603 ms
++ [l.245] 2026-11-10 17:43:38 INFO Requête GET /api/orders/7287 traitée en 137 ms
++ [l.246] 2026-11-10 17:44:34 INFO Utilisateur 155 connecté
++ [l.247] 2026-11-10 17:45:19 ERROR KeyError 'customer_id' dans OrderSerializer.to_dict
++ [l.248] 2026-11-10 17:54:17 INFO Requête GET /api/orders/7355 traitée en 34 ms
++ [l.249] 2026-11-10 17:54:19 INFO Utilisateur 328 connecté
