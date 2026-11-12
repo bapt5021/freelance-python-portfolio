@@ -1,0 +1,25 @@
+# Lance les tests des trois démonstrations à chaque push / pull request (Python 3.11 et 3.12).
+name: tests
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
+        demo: [excel-csv-cleaner, log-report, telegram-alert-bot]
+    defaults:
+      run:
+        working-directory: ${{ matrix.demo }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip install -r requirements-dev.txt
+      - run: python -m pytest -v
+        env:
+          MPLBACKEND: Agg

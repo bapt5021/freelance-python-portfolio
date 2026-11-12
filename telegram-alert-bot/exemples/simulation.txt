@@ -1,0 +1,53 @@
+=== SIMULATION — aucune connexion à Telegram, données fictives ===
+
+Utilisateur : /start
+
+        Bot : Bonjour ! Les alertes sont activées pour ce chat (seuil actuel : 30).
+              
+              Je surveille un fichier de mesures et vous préviens quand une valeur dépasse le seuil.
+              
+              /start — activer les alertes pour ce chat
+              /statut — seuil, fréquence et dernières valeurs
+              /seuil <valeur> — changer le seuil (ex. /seuil 30.5)
+              /aide — cette aide
+
+Utilisateur : /statut
+
+        Bot : Seuil actuel : 30
+              Vérification toutes les 5 min
+              Alertes pour ce chat : activées
+              Mesures lues : 291
+              
+              Dernières valeurs :
+              🟢 local-onduleur : 26.1 (12/11 08:00)
+              🟢 salle-serveur-1 : 22.4 (12/11 08:00)
+              🔴 salle-serveur-2 : 34.2 (12/11 08:00)
+
+   [Tâche planifiée (1er passage)]
+
+        Bot : ⚠️ Seuil 30 dépassé :
+              • salle-serveur-2 : 34.2 (12/11/2026 08:00)
+
+   [Tâche planifiée (2e passage, même mesure)]
+
+   [→ aucune alerte envoyée]
+
+Utilisateur : /seuil abc
+
+        Bot : « abc » n'est pas un nombre valide. Exemple : /seuil 30.5
+
+Utilisateur : /seuil 35
+
+        Bot : ✅ Nouveau seuil : 35
+
+   [Tâche planifiée (seuil 35)]
+
+   [→ aucune alerte envoyée]
+
+   [Nouvelle mesure fictive : local-onduleur = 36.8]
+
+   [Tâche planifiée (après la nouvelle mesure)]
+
+        Bot : ⚠️ Seuil 35 dépassé :
+              • local-onduleur : 36.8 (12/11/2026 08:15)
+

@@ -1,23 +1,40 @@
 # log-report
 
 > Projet de démonstration — non réalisé pour un client.
+> Développé avec assistance IA, vérifié par 15 tests automatisés. Données 100 % fictives.
 
-Compare deux versions d'un fichier `.log` et produit :
-- le **diff** (lignes ajoutées / supprimées, avec numéros de ligne) ;
-- des **statistiques** : nombre d'erreurs par heure, top 5 des messages d'erreur ;
-- un **rapport PDF** de 2 pages : résumé rédigé automatiquement, chiffres clés, 2 graphiques, extrait du diff.
+<p>
+<img src="../portfolio-assets/log-report-page-1.png" alt="Rapport PDF, page 1" width="49%">
+<img src="../portfolio-assets/log-report-page-2.png" alt="Rapport PDF, page 2" width="49%">
+</p>
+<sub>Rendu exact des deux pages de <code>exemples/rapport.pdf</code>.</sub>
 
-Les logs sont **fictifs**, générés par `generate_sample_data.py` (application web imaginaire ; le même fichier
-capturé avant et après une rotation et le déploiement d'une « v2.4 » qui introduit une nouvelle erreur).
+## Le problème
 
-## Format de log attendu
+Après une mise en production, les erreurs augmentent. Il faut comparer le fichier de log d'avant et d'après,
+repérer **ce qui a changé**, **quand** les erreurs se produisent et **lesquelles** reviennent le plus — puis
+en faire un compte rendu lisible par quelqu'un qui n'ouvrira jamais le fichier brut.
 
+## La solution
+
+```bash
+python report.py old.log new.log --pdf rapport.pdf
 ```
-2026-11-10 14:00:00 INFO Déploiement de la version 2.4 terminé
-2026-11-10 15:12:40 ERROR KeyError 'customer_id' dans OrderSerializer.to_dict
-```
-Horodatage `AAAA-MM-JJ HH:MM:SS` (millisecondes et `T` acceptés), niveau `INFO` / `WARNING` (ou `WARN`) / `ERROR`,
-puis le message. Les autres lignes (ex. traces Python) sont comptées comme « non reconnues » mais restent dans le diff.
+
+Une commande qui produit le diff, les statistiques et un **rapport PDF de 2 pages** avec résumé rédigé automatiquement.
+
+## Fonctionnalités
+
+- **Diff** ligne à ligne : lignes ajoutées et supprimées, avec leur numéro de ligne.
+- **Erreurs par heure**, heures sans erreur incluses.
+- **Top 5 des messages d'erreur**, regroupés par modèle : `db-01` / `db-02` → `db-<N>`, IP → `<IP>`, identifiants → `<ID>`.
+- **Rapport PDF** (2 pages max) : résumé, tableau des niveaux, graphique horaire comparatif, top 5, extrait du diff.
+- **Exports** (`--export-dir`) : `diff.txt` complet, `erreurs_par_heure.csv`, `top_erreurs.csv`.
+- Lignes non standard (traces Python) comptées à part, sans faire échouer l'analyse.
+
+## Technologies
+
+Python 3.11+ · **pandas** (statistiques) · **matplotlib** (graphiques) · **reportlab** (PDF) · `difflib` (diff) · **pytest**.
 
 ## Installation
 
@@ -25,30 +42,22 @@ puis le message. Les autres lignes (ex. traces Python) sont comptées comme « n
 cd log-report
 python3 -m venv .venv
 source .venv/bin/activate          # Windows : .venv\Scripts\activate
-pip install -r requirements.txt    # + requirements-dev.txt pour les tests
+pip install -r requirements.txt    # requirements-dev.txt pour les tests
 ```
-
-Python 3.11 ou plus récent.
 
 ## Utilisation
 
 ```bash
-python generate_sample_data.py                      # crée data/old.log et data/new.log
-python report.py data/old.log data/new.log --pdf rapport.pdf
+python generate_sample_data.py                      # crée data/old.log et data/new.log (fictifs)
 python report.py data/old.log data/new.log --pdf rapport.pdf --export-dir exemples/
 ```
 
-Options : `--export-dir` écrit `diff.txt` (diff complet), `erreurs_par_heure.csv` et `top_erreurs.csv` ;
-`--top N` change la taille du classement (5 par défaut).
+Format de log attendu : `2026-11-10 14:00:00 INFO message` (millisecondes et `T` acceptés ; niveaux `INFO`,
+`WARNING`/`WARN`, `ERROR`).
 
-## Exemple de sortie
+## Exemple de résultat
 
 ```
-== Erreurs par heure (new.log) ==
-2026-11-10 14h    4  ####
-2026-11-10 15h   10  ##########
-2026-11-10 16h    6  ######
-
 == Top 5 des messages d'erreur (new.log) ==
 1. (15) Timeout de connexion à la base db-<N> après <N> s
 2. (8) KeyError 'customer_id' dans OrderSerializer.to_dict
@@ -65,41 +74,37 @@ Options : `--export-dir` écrit `diff.txt` (diff complet), `erreurs_par_heure.cs
 Fichiers produits : [`exemples/rapport.pdf`](exemples/rapport.pdf), [`exemples/diff.txt`](exemples/diff.txt),
 [`exemples/erreurs_par_heure.csv`](exemples/erreurs_par_heure.csv), [`exemples/top_erreurs.csv`](exemples/top_erreurs.csv).
 
-**Regroupement des messages** : pour que « Timeout … db-01 » et « Timeout … db-02 » comptent comme la même erreur,
-les parties variables sont remplacées par des marqueurs : adresses IP → `<IP>`, identifiants hexadécimaux → `<ID>`,
-nombres → `<N>`.
+**Vérification croisée** : erreurs par heure recomptées avec `awk`, niveaux avec `grep -c`, diff avec la
+commande système `diff` (43 suppressions, 106 ajouts) — résultats identiques à ceux du programme.
 
 ## Tests
 
 ```bash
 pip install -r requirements-dev.txt
-python -m pytest -v
+python -m pytest -v        # 15 tests
 ```
 
-- diff exact sur des fixtures connues (`tests/fixtures/mini_old.log`, `mini_new.log`), ligne modifiée, lignes répétées ;
-- statistiques vérifiées sur `tests/fixtures/mini_stats.log` (erreurs par heure, heure à 0 incluse, top 5 avec ex æquo) ;
-- CLI, exports, et PDF valide de 2 pages au maximum.
+Diff exact sur des fixtures connues, statistiques vérifiées sur un mini fichier dont le résultat est calculé
+à la main (ex æquo compris), CLI, exports, PDF valide de 2 pages au maximum.
 
 ## Structure
 
 ```
 report.py                # CLI
 logreport/parsing.py     # lecture et découpage des lignes
-logreport/diff.py        # diff ligne à ligne (difflib)
+logreport/diff.py        # diff ligne à ligne
 logreport/stats.py       # erreurs par heure, top des messages
 logreport/charts.py      # graphiques matplotlib
-logreport/pdf.py         # rapport PDF (reportlab)
+logreport/pdf.py         # rapport PDF
 generate_sample_data.py  # logs fictifs
 ```
 
 ## Limites
 
-- Diff **ligne à ligne exact** : deux exécutions différentes (horodatages différents) apparaissent entièrement
-  modifiées. Pour comparer deux versions d'une application, il faudrait comparer les messages sans l'horodatage.
-- `difflib` convient à quelques dizaines de milliers de lignes ; au-delà, `diff` système ou un traitement en flux
-  serait plus adapté.
-- Un seul format de log est reconnu (regex dans `parsing.py`, facile à adapter).
-- Le regroupement par modèle peut fusionner des messages qui ne diffèrent que par un nombre significatif
-  (ex. codes HTTP 404 et 500).
-- Les statistiques et le top 5 portent sur le **nouveau** fichier ; le graphique horaire compare les deux.
-- Le PDF borne l'extrait du diff à 12 lignes pour tenir sur 2 pages ; le diff complet est dans l'export texte.
+- Diff **ligne à ligne exact** : deux exécutions distinctes (horodatages différents) apparaissent entièrement
+  modifiées ; comparer deux versions d'une application demanderait de comparer les messages sans horodatage.
+- `difflib` convient à quelques dizaines de milliers de lignes ; au-delà, `diff` système ou un traitement en flux.
+- Un seul format de log reconnu (regex dans `parsing.py`, facile à adapter).
+- Le regroupement par modèle peut fusionner des messages qui ne diffèrent que par un nombre significatif (codes HTTP).
+- Statistiques et top 5 portent sur le **nouveau** fichier ; le graphique horaire compare les deux.
+- L'extrait du diff dans le PDF est limité à 12 lignes ; le diff complet est dans l'export texte.

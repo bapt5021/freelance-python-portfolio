@@ -1,0 +1,70 @@
+[
+  {
+    "role": "user",
+    "text": "/start"
+  },
+  {
+    "role": "bot",
+    "text": "Bonjour ! Les alertes sont activées pour ce chat (seuil actuel : 30).\n\nJe surveille un fichier de mesures et vous préviens quand une valeur dépasse le seuil.\n\n/start — activer les alertes pour ce chat\n/statut — seuil, fréquence et dernières valeurs\n/seuil <valeur> — changer le seuil (ex. /seuil 30.5)\n/aide — cette aide"
+  },
+  {
+    "role": "user",
+    "text": "/statut"
+  },
+  {
+    "role": "bot",
+    "text": "Seuil actuel : 30\nVérification toutes les 5 min\nAlertes pour ce chat : activées\nMesures lues : 291\n\nDernières valeurs :\n🟢 local-onduleur : 26.1 (12/11 08:00)\n🟢 salle-serveur-1 : 22.4 (12/11 08:00)\n🔴 salle-serveur-2 : 34.2 (12/11 08:00)"
+  },
+  {
+    "role": "event",
+    "text": "Tâche planifiée (1er passage)"
+  },
+  {
+    "role": "bot",
+    "text": "⚠️ Seuil 30 dépassé :\n• salle-serveur-2 : 34.2 (12/11/2026 08:00)"
+  },
+  {
+    "role": "event",
+    "text": "Tâche planifiée (2e passage, même mesure)"
+  },
+  {
+    "role": "event",
+    "text": "→ aucune alerte envoyée"
+  },
+  {
+    "role": "user",
+    "text": "/seuil abc"
+  },
+  {
+    "role": "bot",
+    "text": "« abc » n'est pas un nombre valide. Exemple : /seuil 30.5"
+  },
+  {
+    "role": "user",
+    "text": "/seuil 35"
+  },
+  {
+    "role": "bot",
+    "text": "✅ Nouveau seuil : 35"
+  },
+  {
+    "role": "event",
+    "text": "Tâche planifiée (seuil 35)"
+  },
+  {
+    "role": "event",
+    "text": "→ aucune alerte envoyée"
+  },
+  {
+    "role": "event",
+    "text": "Nouvelle mesure fictive : local-onduleur = 36.8"
+  },
+  {
+    "role": "event",
+    "text": "Tâche planifiée (après la nouvelle mesure)"
+  },
+  {
+    "role": "bot",
+    "text": "⚠️ Seuil 35 dépassé :\n• local-onduleur : 36.8 (12/11/2026 08:15)"
+  }
+]
