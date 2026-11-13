@@ -119,3 +119,7 @@ generate_sample_data.py  # données fictives + vérité terrain
 - Le rapprochement approximatif des clients (seuil 0,85) peut confondre deux noms très proches ; le journal permet de le vérifier.
 - Seule la première feuille de chaque fichier Excel est lue ; pas de support `.xls` (ancien format).
 - Le contenu des fichiers générés est reproductible, mais un `.xlsx` régénéré diffère par ses métadonnées de date.
+
+## Licence
+
+[MIT](../LICENSE) — voir le fichier à la racine du dépôt.

@@ -63,10 +63,16 @@ portfolio-assets/     visuels du portfolio et script qui les génère
 run_tests.sh          lance toutes les suites de tests
 ```
 
+## Licence
+
+Code, données fictives et visuels de ce dépôt : [licence MIT](LICENSE).
+Les bibliothèques utilisées (pandas, openpyxl, matplotlib, reportlab, python-telegram-bot…) restent sous leurs
+propres licences et ne sont pas incluses dans le dépôt : elles sont installées via `requirements.txt`.
+
 ---
 
 ### English summary
 
 Three Python **demo projects** (not client work), built **with AI assistance** and verified by automated tests
-(108 pytest tests), using **100 % synthetic data**: an Excel/CSV cleaner producing a traceable 3-sheet report,
+(108 pytest tests), using **100 % synthetic data**, released under the MIT license: an Excel/CSV cleaner producing a traceable 3-sheet report,
 a log diff/statistics tool producing a 2-page PDF report, and a Telegram threshold-alert bot with an offline simulation.

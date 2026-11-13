@@ -108,3 +108,7 @@ generate_sample_data.py  # logs fictifs
 - Le regroupement par modèle peut fusionner des messages qui ne diffèrent que par un nombre significatif (codes HTTP).
 - Statistiques et top 5 portent sur le **nouveau** fichier ; le graphique horaire compare les deux.
 - L'extrait du diff dans le PDF est limité à 12 lignes ; le diff complet est dans l'export texte.
+
+## Licence
+
+[MIT](../LICENSE) — voir le fichier à la racine du dépôt.

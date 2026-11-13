@@ -129,3 +129,7 @@ generate_sample_data.py  # mesures.csv fictif, option --ajouter
 - Pas de commande de désabonnement.
 - CSV relu entièrement à chaque passage : adapté à quelques milliers de lignes.
 - Mode *polling* ; un déploiement en production utiliserait plutôt un webhook.
+
+## Licence
+
+[MIT](../LICENSE) — voir le fichier à la racine du dépôt.
