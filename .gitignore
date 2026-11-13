@@ -7,3 +7,5 @@
 __pycache__/
 *.pyc
 .pytest_cache/
+# Réglages Claude Code locaux (jamais publiés)
+.claude/settings.local.json
