@@ -163,3 +163,13 @@ def test_build_application(csv_path):
     job = app.job_queue.get_jobs_by_name("verification-seuil")[0]
     assert job.job.trigger.interval.total_seconds() == 120
     assert app.bot_data["seuil"] == 30
+
+
+def test_check_sans_abonne_ne_consomme_pas_l_alerte(bot_data):
+    """Défaut trouvé au test réel : une vérification sans abonné ne doit pas marquer l'alerte comme envoyée."""
+    ctx = make_context(bot_data)
+    asyncio.run(bot.check_measures(ctx))          # aucun abonné encore
+    assert bot_data["deja_alerte"] == {}
+    bot_data["abonnes"].add(1)                    # l'utilisateur fait /start
+    asyncio.run(bot.check_measures(ctx))
+    assert ctx.bot.send_message.await_count == 1  # il reçoit bien l'alerte en cours

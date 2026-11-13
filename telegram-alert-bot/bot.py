@@ -133,6 +133,10 @@ async def seuil(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 async def check_measures(context: ContextTypes.DEFAULT_TYPE) -> None:
     """Relit le CSV et envoie une alerte aux abonnés si une valeur dépasse le seuil."""
+    # Personne d'abonné : on ne fait rien, sinon les alertes seraient marquées
+    # « déjà envoyées » et le premier abonné ne les recevrait jamais.
+    if not context.bot_data["abonnes"]:
+        return
     config: Config = context.bot_data["config"]
     try:
         mf = read_measures(config.csv_path)

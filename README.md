@@ -7,7 +7,7 @@ nettoyer des fichiers Excel/CSV, analyser des logs avec un rapport PDF, et envoy
 
 > **Transparence**
 > - Ce sont des projets de démonstration : **aucun n'a été réalisé pour un client**.
-> - Ils ont été **développés avec l'assistance d'une IA** (Claude), puis relus, exécutés et **vérifiés par des tests automatisés** (108 tests).
+> - Ils ont été **développés avec l'assistance d'une IA** (Claude), puis relus, exécutés et **vérifiés par des tests automatisés** (113 tests, plus un test réel du bot sur Telegram).
 > - Toutes les données sont **100 % fictives**, générées par script. Aucune donnée réelle.
 
 ## Les démonstrations
@@ -51,7 +51,7 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements-dev.txt
 .venv/bin/python -m pytest
 ```
 
-Résultat attendu : `47 passed` (excel-csv-cleaner), `15 passed` (log-report), `46 passed` (telegram-alert-bot).
+Résultat attendu : `47 passed` (excel-csv-cleaner), `15 passed` (log-report), `51 passed` (telegram-alert-bot).
 
 ## Structure du dépôt
 
@@ -74,5 +74,5 @@ propres licences et ne sont pas incluses dans le dépôt : elles sont installée
 ### English summary
 
 Three Python **demo projects** (not client work), built **with AI assistance** and verified by automated tests
-(108 pytest tests), using **100 % synthetic data**, released under the MIT license: an Excel/CSV cleaner producing a traceable 3-sheet report,
+(113 pytest tests, plus a real-world Telegram test of the bot), using **100 % synthetic data**, released under the MIT license: an Excel/CSV cleaner producing a traceable 3-sheet report,
 a log diff/statistics tool producing a 2-page PDF report, and a Telegram threshold-alert bot with an offline simulation.

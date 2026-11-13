@@ -1,7 +1,8 @@
 # telegram-alert-bot
 
 > Projet de démonstration — non réalisé pour un client.
-> Développé avec assistance IA, vérifié par 46 tests automatisés sans réseau. Données 100 % fictives.
+> Développé avec assistance IA, vérifié par 51 tests automatisés sans réseau **et par un test réel sur Telegram**
+> (13/11/2026, bot de test, téléphone réel). Données 100 % fictives.
 
 <img src="../portfolio-assets/telegram-alert-bot-simulation.png" alt="Simulation de conversation avec le bot" width="520">
 
@@ -103,12 +104,35 @@ Utilisateur : /seuil abc
 
 ```bash
 pip install -r requirements-dev.txt
-python -m pytest -v        # 46 tests, toute connexion réseau bloquée par tests/conftest.py
+python -m pytest -v        # 51 tests, toute connexion réseau bloquée par tests/conftest.py
 ```
 
 Logique de seuil (égalité, dernière mesure, anti-doublon), parsing de `/seuil` (valides et invalides),
 lecture du CSV (lignes invalides, colonne manquante, fichier absent), handlers et tâche planifiée avec des
-objets simulés, configuration, construction de l'application, scénario de simulation complet.
+objets simulés, configuration, construction de l'application, scénario de simulation complet,
+vérification du token sans fuite (`check_token.py`).
+
+## Test réel sur Telegram (13/11/2026)
+
+Bot de test créé avec BotFather, token dans `.env`, bot lancé 15 minutes au maximum (aucun service installé),
+vérification toutes les 30 s, mesures fictives :
+
+| Étape | Résultat observé sur le téléphone |
+|---|---|
+| `/start` | message de bienvenue |
+| alerte initiale | reçue **4 s** après `/start` (`salle-serveur-2 : 34.2`) |
+| `/statut` | seuil, 291 mesures, 🔴 / 🟢 par capteur |
+| `/seuil abc` | refus avec message explicite |
+| `/seuil 35` | « ✅ Nouveau seuil : 35 », puis aucune alerte (34,2 < 35) |
+| nouvelle mesure fictive 36,8 | alerte reçue **9 s** après l'écriture dans le CSV, une seule fois |
+
+Journal du bot : aucune erreur, **aucune trace du token**.
+
+**Défaut trouvé et corrigé grâce à ce test** : une vérification lancée avant le premier `/start` marquait
+l'alerte comme envoyée, si bien que le premier abonné ne la recevait jamais. Un test de non-régression
+reproduit le cas.
+
+Pour vérifier votre propre token sans l'afficher : `python check_token.py`.
 
 ## Structure
 
@@ -122,7 +146,10 @@ generate_sample_data.py  # mesures.csv fictif, option --ajouter
 
 ## Limites
 
-- **Testé uniquement hors ligne** : le fonctionnement sur le vrai réseau Telegram reste à valider manuellement.
+- Test réel limité : un bot, un abonné, 15 minutes, quelques mesures ; pas de test de charge ni de longue durée.
+- Les heures des alertes sont celles écrites dans le CSV, **sans fuseau horaire** (un CSV en UTC affichera
+  16:35 sur un téléphone réglé à 17:35).
+- Pas de reprise automatique si le bot est arrêté : il faut le relancer (ou le superviser, hors périmètre de la démo).
 - **État en mémoire** : seuil, abonnés et alertes envoyées sont perdus au redémarrage (`PicklePersistence` possible).
 - Un seul seuil pour tous les capteurs ; pas de seuil bas ni d'alerte de retour à la normale.
 - Sans `ALLOWED_CHAT_IDS`, **n'importe qui** trouvant le bot peut s'abonner et changer le seuil.
