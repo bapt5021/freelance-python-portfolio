@@ -90,6 +90,8 @@ AIDE = (
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     context.bot_data["abonnes"].add(update.effective_chat.id)
+    # L'identifiant du chat sert à renseigner ALLOWED_CHAT_IDS (restriction d'accès).
+    log.info("Chat %s abonné aux alertes", update.effective_chat.id)
     await update.message.reply_text(
         f"Bonjour ! Les alertes sont activées pour ce chat "
         f"(seuil actuel : {fmt_value(context.bot_data['seuil'])}).\n\n{AIDE}")

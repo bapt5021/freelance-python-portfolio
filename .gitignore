@@ -9,3 +9,5 @@ __pycache__/
 .pytest_cache/
 # Réglages Claude Code locaux (jamais publiés)
 .claude/settings.local.json
+# Dossier de travail du test réel Telegram (logs, CSV de test)
+.e2e/
